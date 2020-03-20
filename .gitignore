@@ -40,4 +40,3 @@ $RECYCLE.BIN/
 ###### PYTHON ######
 __pycache__
 *.sqlite3
-migrations/
