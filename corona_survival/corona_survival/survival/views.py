@@ -10,11 +10,11 @@ def home(request):
         'items': Item.objects.all(),
         'title':'Corona Survival'
     }
-    return render(request, 'coronasurvival/home.html', context)
+    return render(request, 'survival/home.html', context)
 
 @login_required
 def admin(request):
     context = {
         'title':'Admin page'
     }
-    return render(request, 'coronasurvival/admin.html', context)
+    return render(request, 'survival/admin.html', context)

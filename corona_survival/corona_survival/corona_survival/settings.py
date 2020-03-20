@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'coronasurvival.apps.CoronasurvivalConfig',
+    'survival.apps.SurvivalConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
