@@ -1,0 +1,19 @@
+{% extends "coronasurvival/base.html" %}
+{% block content %}
+    {% for item in items %}
+    <p>
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ item }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Category: {{ item.category }}</p>
+                {% for collection in item.collections.all %}
+                    <p class="card-text">Collection: {{ collection }}</p>
+                {% endfor %}
+                <p class="card-text">Unit: {{ item.unit }}</p>
+            </div>
+        </div>
+    </p>
+    {% endfor %}
+{% endblock content %}
