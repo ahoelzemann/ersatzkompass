@@ -8,7 +8,7 @@ from .models import Item, Category, Substitution
 def home(request):
     context = {
         'items': Item.objects.all(),
-        'title':'Corona Survival'
+        'title':'Corona Survival - Home'
     }
     return render(request, 'survival/home.html', context)
 
@@ -18,6 +18,13 @@ def category(request):
         'title':'Corona Survival - Categories'
     }
     return render(request, 'survival/category.html', context)
+
+def item(request):
+    context = {
+        'items': Item.objects.all(),
+        'title':'Corona Survival - Items'
+    }
+    return render(request, 'survival/item.html', context)
 
 def substitution(request):
     context = {
@@ -29,6 +36,10 @@ def substitution(request):
 @login_required
 def admin(request):
     context = {
+        'items': Item.objects.all(),
+        'categories': Category.objects.all(),
+        'subcategories': Item.objects.all(),
+        'substitutions': Substitution.objects.all(),
         'title':'Admin page'
     }
     return render(request, 'survival/admin.html', context)

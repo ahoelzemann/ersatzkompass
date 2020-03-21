@@ -1,16 +1,35 @@
 {% extends "survival/base.html" %}
 {% block content %}
-    <h2>Categories</h2>
-    {% for category in categories %}
-    <p>
-        <div class="card">
-            <div class="card-header">
-                <h5>{{ category }}</h5>
-            </div>
-            <div class="card-body">
-                <p class="card-text">Items: {{ category.item_set.count }}</p>
-            </div>
-        </div>
-    </p>
-    {% endfor %}
+<h2> {{ categories.count }} Categories so far</h2>
+{% if user.is_authenticated %}
+    <p><button type="button" class="btn btn-success">Add Item</button></p>
+{% endif %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Subcategories</th>
+        <th scope="col">Items</th>
+        {% if user.is_authenticated %}
+            <th scope="col">Actions</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+            <tr>
+                <th scope="row">{{ category.id }}</th>
+                <td>{{ category.name }}</td>
+                <td>{{ category.subcategory_set.count }}</td>
+                <td>{{ category.item_set.count }}</td>
+                {% if user.is_authenticated %}
+                    <td><button type="button" class="btn btn-link">Edit</button></td>
+                {% else %}
+                    <td><button type="button" class="btn btn-link">Show</button></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock content %}

@@ -1,6 +1,6 @@
 {% extends "survival/base.html" %}
 {% block content %}
-<h2> {{ substitutions.count }} Substitutions so far</h2>
+<h2> {{ items.count }}Items so far</h2>
 {% if user.is_authenticated %}
     <p><button type="button" class="btn btn-success">Add Item</button></p>
 {% endif %}
@@ -8,19 +8,21 @@
     <thead>
       <tr>
         <th scope="col">ID</th>
-        <th scope="col">Missing Item</th>
-        <th scope="col">Items needed</th>
-        <th scope="col">Description</th>
-        <th scope="col">Actions</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Subcategory</th>
+        {% if user.is_authenticated %}
+            <th scope="col">Actions</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
-        {% for substitution in substitutions %}
+        {% for item in items %}
             <tr>
-                <th scope="row">{{ substitution.id }}</th>
-                <td>{{ substitution.item_missing }}</td>
-                <td>{{ substitution.items_needed.count }}</td>
-                <td>{{ substitution.description_of_creation }}</td>
+                <th scope="row">{{ item.id }}</th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.subcategory }}</td>
                 {% if user.is_authenticated %}
                     <td><button type="button" class="btn btn-link">Edit</button></td>
                 {% else %}
