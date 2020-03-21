@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Item, Unit, Category, Collection
+from .models import Item, Category, Subcategory, Substitution, Comment
 # Register your models here.
 admin.site.register(Item)
-admin.site.register(Unit)
 admin.site.register(Category)
-admin.site.register(Collection)
+admin.site.register(Subcategory)
+admin.site.register(Substitution)
+admin.site.register(Comment)

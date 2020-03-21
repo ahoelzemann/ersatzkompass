@@ -1,0 +1,32 @@
+{% extends "survival/base.html" %}
+{% block content %}
+    <h2>Substitution</h2>
+    {% for substitution in substitutions %}
+    <p>
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ substitution }}</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Missing item: {{ substitution.item_missing }}</p>
+            </div>
+            <div class="card-body">
+                <h2>Items needed:</h2>
+                {% for item_needed in substitution.items_needed.all %}
+                    <p class="card-text"> {{ item_needed }}</p>
+                {% endfor %}
+                <h2>Description:</h2>
+                <div class="card-body">
+                    <p class="card-text"> {{ substitution.description_of_creation }}</p>
+                </div>
+                <h2>Comments:</h2>
+                <div class="card-body">
+                    {% for comment in substitution.comment_set.all %}
+                        <p class="card-text"> {{ comment }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </p>
+    {% endfor %}
+{% endblock content %}

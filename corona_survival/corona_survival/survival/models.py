@@ -7,23 +7,30 @@ class Category(models.Model):
     def __str__(self):
         return "%s" % (self.name)
 
-class Unit(models.Model):
+class Subcategory(models.Model):
     name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return "%s" % (self.name)
-
-class Collection(models.Model):
-    name = models.CharField(max_length=100)
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return "%s" % (self.name)
 
 class Item(models.Model):
     name = models.CharField(max_length=100)
-    unit = models.ForeignKey(Unit, on_delete=models.DO_NOTHING)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
-    collections = models.ManyToManyField(Collection)
+    subcategory = models.ForeignKey(Subcategory, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return "%s" % (self.name)
+
+class Substitution(models.Model):
+    item_missing = models.ForeignKey(Item, on_delete=models.DO_NOTHING)
+    items_needed = models.ManyToManyField(Item, related_name = 'items_needed')
+    description_of_creation = models.TextField(blank=True)
+
+class Comment(models.Model):
+    name = models.CharField(max_length=100, blank=False)
+    text = models.TextField(blank=True)
+    substitution = models.ForeignKey(Substitution, on_delete=models.DO_NOTHING)
+
+    def __str__(self):
+        return "%s: %s" % (self.name, self.text)

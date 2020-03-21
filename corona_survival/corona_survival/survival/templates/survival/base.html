@@ -20,13 +20,13 @@
               <ul class="navbar-nav mr-auto">
                 {% if user.is_authenticated %}
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cs-home' %}">Units<span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'cs-home' %}">Categories<span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item active">
                     <a class="nav-link" href="{% url 'cs-home' %}">Items<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'cs-category' %}">Categories<span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'cs-substitution' %}">Substitutions<span class="sr-only">(current)</span></a>
                   </li>
                 {% endif %}
                 <!--<li class="nav-item dropdown">
