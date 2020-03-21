@@ -7,7 +7,6 @@ from .models import Item, Category, Substitution
 # Create your views here.
 def home(request):
     context = {
-        'items': Item.objects.all(),
         'title':'Corona Survival - Home'
     }
     return render(request, 'survival/home.html', context)
@@ -19,12 +18,15 @@ def category(request):
     }
     return render(request, 'survival/category.html', context)
 
+class ItemDetailView(DetailView):
+    model = Item    
+
 def item(request):
     context = {
         'items': Item.objects.all(),
         'title':'Corona Survival - Items'
     }
-    return render(request, 'survival/item.html', context)
+    return render(request, 'survival/items.html', context)
 
 def substitution(request):
     context = {

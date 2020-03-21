@@ -1,6 +1,6 @@
 {% extends "survival/base.html" %}
 {% block content %}
-<h2> {{ items.count }}Items so far</h2>
+<h2> {{ items.count }} Items so far</h2>
 {% if user.is_authenticated %}
     <p><button type="button" class="btn btn-success">Add Item</button></p>
 {% endif %}
@@ -24,9 +24,9 @@
                 <td>{{ item.category }}</td>
                 <td>{{ item.subcategory }}</td>
                 {% if user.is_authenticated %}
-                    <td><button type="button" class="btn btn-link">Edit</button></td>
+                    <td><button type="button" href="{% url 'item-detail' item.id %}"class="btn btn-link">Edit</button></td>
                 {% else %}
-                    <td><button type="button" class="btn btn-link">Show</button></td>
+                    <td><a href="{% url 'item-detail' item.id %}" class="btn btn-link">Show</a></td>
                 {% endif %}
             </tr>
         {% endfor %}
