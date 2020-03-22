@@ -45,16 +45,13 @@
             <a class="btn btn-success btn-lg btn-block float-right" href="{% url 'cs-categories' %}">Los geht's</a>
         </div>
     </div>
-
-    <div class="container">
+    <div class="row top-buffer">
         {% for item in items %}
-            <div class="col-sm">
-                <div class="card" style="width: 15rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item }}</h5>
-                        <p class="card-text">Hier findest du einige Alternativen um {{ item }} zu ersetzen.</p>
-                        <a class="btn btn-primary" href="{% url 'item-detail' item.id %}">Lösung finden</a>
-                    </div>
+            <div class="col-lg">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item }}</h5>
+                    <p class="card-text">Hier findest du einige Alternativen um {{ item }} zu ersetzen.</p>
+                    <a class="btn btn-primary" href="{% url 'item-detail' item.id %}">Lösung finden</a>
                 </div>
             </div>
         {% endfor %}
