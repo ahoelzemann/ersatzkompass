@@ -32,40 +32,60 @@
                 zeigen.</p>
         </div>
     </div>
-    <div class="container">
-        <div class="row no-padding">
-            <div class="col-sm-5 no-padding">
-                <div class="row no-padding">
-                    <div class="col-sm">
-                        <img style="max-width: 100%; max-height: 100%" src="/media/gemuese.png">
-                    </div>
-                </div>
-                <div class="row no-padding">
-                    <div class="col-sm">
-                        <img style="max-width: 100%; max-height: 100%" src="/media/backwaren.png">
-                    </div>
-                </div>
+    <div class="row no-padding">
+        <div class="col-lg-3">
+            Entstanden im Rahmen von:</br>
+            <img src="/media/logo_project.png" class="img-thumbnail">
+        </div>
+        <div class="col-lg-6">
 
+        </div>
+        <div class="col-lg-3">
+            <a class="btn btn-success btn-lg btn-block float-right" href="{% url 'cs-categories' %}">Los geht's</a>
+        </div>
+    </div>
+    <div class="row no-padding">
+        <div class="col-sm-5 no-padding">
+            <div class="row no-padding">
+                <div class="col-sm">
+                    <img style="max-width: 100%; max-height: 100%" src="/media/gemuese.png">
+                </div>
             </div>
-            <div class="col-sm-7 no-padding">
-                <div class="row no-padding">
-                    <div class="col-sm-6 no-padding">
-                        <img style="max-width:100%; max-height: 100%" src="/media/Fleisch_fisch.png">
-                    </div>
-                    <div class="col-sm-6 no-padding">
-                        <img style="max-width:100%; max-height: 100%" src="/media/Milchprodukte_eier.png">
-                    </div>
+            <div class="row no-padding">
+                <div class="col-sm">
+                    <img style="max-width: 100%; max-height: 100%" src="/media/backwaren.png">
                 </div>
-                <div class="row no-padding">
-                    <div class="col-sm no-padding">
-                        <img style="max-width:100%; max-height: 100%" src="/media/Teigwaren_beilagen.png">
-                    </div>
-                </div>
+            </div>
 
+        </div>
+        <div class="col-sm-7 no-padding">
+            <div class="row no-padding">
+                <div class="col-sm-6 no-padding">
+                    <img style="max-width:100%; max-height: 100%" src="/media/Fleisch_fisch.png">
+                </div>
+                <div class="col-sm-6 no-padding">
+                    <img style="max-width:100%; max-height: 100%" src="/media/Milchprodukte_eier.png">
+                </div>
+            </div>
+            <div class="row no-padding">
+                <div class="col-sm no-padding">
+                    <img style="max-width:100%; max-height: 100%" src="/media/Teigwaren_beilagen.png">
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="row top-buffer">
+        {% for item in items %}
+            <div class="col-lg">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item|truncatechars:9 }}</h5>
+                    <p class="card-text">Hier findest du einige Alternativen um {{ item|truncatechars:9 }} zu
+                        ersetzen.</p>
+                    <a class="btn btn-primary" href="{% url 'item-detail' item.id %}">Lösung finden</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 
 
