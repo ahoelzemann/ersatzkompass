@@ -25,7 +25,7 @@ SECRET_KEY = 'y@%49!af@@pen=khyv!$6*y2&ghg&3pwhe*gyi@jogcg@jkbob'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['corsubst.uber.space','127.0.0.1']
 
 
 # Application definition
