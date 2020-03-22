@@ -25,7 +25,7 @@ SECRET_KEY = 'y@%49!af@@pen=khyv!$6*y2&ghg&3pwhe*gyi@jogcg@jkbob'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['corsubst.uber.space', '127.0.0.1']
 
 
 # Application definition
@@ -76,18 +76,18 @@ WSGI_APPLICATION = 'corona_survival.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     }
-    #'default': {
-    #    'ENGINE': 'django.db.backends.mysql',
-    #    'NAME': 'web74_wirvsvirus_substitution',
-    #    'USER': 'wirvsvirus_admin',
-    #    'PASSWORD': 'wirvsvirus_corona_sucks123%',
-    #    'HOST': 'web74.c5.webspace-verkauf.de',
-    #    'PORT': '3306',
-    #}
+     # 'default': {
+     #     'ENGINE': 'django.db.backends.sqlite3',
+     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+     # }
+    'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'web74_wirvsvirus_substitution',
+       'USER': 'wirvsvirus_admin',
+       'PASSWORD': 'wirvsvirus_corona_sucks123%',
+       'HOST': 'web74.c5.webspace-verkauf.de',
+       'PORT': '3306',
+    }
 }
 
 
