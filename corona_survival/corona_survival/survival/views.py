@@ -36,7 +36,7 @@ class CommentCreateView(CreateView):
         return context
 
 class ItemDetailView(DetailView):
-    model = Item    
+    model = Item
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -53,14 +53,24 @@ class CategoryDetailView(DetailView):
 
 class SearchResultsView(ListView):
     model = Item
-    template_name = 'items.html'
+    template_name = 'survival/items_search.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        items = Item.objects.filter(
-            Q(name__icontains=query) | Q(state__icontains=query)
-        )
-        return items
+        search_objects = Item.objects.filter(Q(name__icontains=query))
+        #paginator = Paginator(items, 10)
+        #page_number = self.request.GET.get('page')
+        #page_obj = paginator.get_page(page_number)
+        #result = {
+        #    'page_obj': page_obj,
+        #    'count': paginator.count
+        #}
+        return search_objects
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['categories'] = Category.objects.all()
+        return context
 
 def items(request):
     items = Item.objects.all()
@@ -77,6 +87,7 @@ def items(request):
     context = {
         'page_obj': page_obj,
         'categories': Category.objects.all(),
+        'count': paginator.count
     }
     return render(request, 'survival/items.html', context)
 

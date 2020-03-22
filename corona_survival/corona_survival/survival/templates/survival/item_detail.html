@@ -19,6 +19,7 @@
 <p>
 <div class="card">
   <h5 class="card-header">Kommentare</h5>
+  <button type="button" class="btn btn-link">Neuer Kommentar</button>
   <div class="card-body">
     {% for comment in item.substitution_set.first.comments.all %}
     <p class="card-text">{{ comment }}</p>

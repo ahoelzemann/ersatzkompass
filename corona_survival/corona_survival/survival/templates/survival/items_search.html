@@ -1,9 +1,9 @@
 {% extends "survival/base.html" %}
 {% block content %}
-{% if not count %}
-<p><h5>Leider keine Begriffe gefunden</h5></p>
+{% if not object_list %}
+<p><h5>Leider keine Begriffe gefunden {{object_list.count}}</h5></p>
 {% else %}
-<h2> {{ count }} Begriffe gefunden</h2>
+<h2> {{ object_list.count }} Begriffe gefunden</h2>
 <table class="table">
     <thead>
       <tr>
@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-        {% for item in page_obj %}
+        {% for item in object_list %}
             <tr>
                 <td>{{ item.name }}</td>
                 <td>{{ item.category }}</td>
@@ -24,7 +24,6 @@
         {% endfor %}
     </tbody>
 </table>
-
 <div class="pagination">
     <span class="step-links">
         {% if page_obj.has_previous %}
