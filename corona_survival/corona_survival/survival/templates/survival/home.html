@@ -16,10 +16,10 @@
         </div>
         <div class="col-lg">
             <p>Herzlich Willkommen</b> bei <b>ErsatzKompass</b></p>
-            <p>Hier findest du jede Menge Ideen und Tipps, um Zutaten in
+            <p>Hier findest Du jede Menge Ideen und Tipps, um Zutaten in
                 Rezepten ganz einfach zu ersetzen.
-                Dadurch lassen sich Rezepte schnell abwandeln und an das anpassen, was du gerade zur Verfügung hast.
-                So ermöglichen wir es dir auch dann zu kochen, wenn du nicht alles vorrätig hast oder etwas gerade
+                Dadurch lassen sich Rezepte schnell abwandeln und an das anpassen, was Du gerade zur Verfügung hast.
+                So ermöglichen wir es dir auch dann zu kochen, wenn Du nicht alles vorrätig hast oder etwas gerade
                 nicht
                 einkaufen
                 kannst.<br><br>
@@ -28,7 +28,7 @@
                 im
                 „Lebensmittel“-Bereich ein Lebensmittel aus, für das Du einen Ersatz suchst: wir zeigen dir dann
                 Alternativen.
-                Wenn du selbst eine Idee hast, wie eine Zutat durch eine andere ersetzt werden kann, hinterlasse
+                Wenn Du selbst eine Idee hast, wie eine Zutat durch eine andere ersetzt werden kann, hinterlasse
                 gerne
                 einen
                 Kommentar, damit die Datenbank immer weiter wachsen kann.
@@ -50,7 +50,7 @@
             <div class="col-lg">
                 <div class="card-body">
                     <h5 class="card-title">{{ item|truncatechars:9 }}</h5>
-                    <p class="card-text">Hier findest du einige Alternativen um {{ item|truncatechars:9 }} zu ersetzen.</p>
+                    <p class="card-text">Hier findest Du einige Alternativen um {{ item|truncatechars:9 }} zu ersetzen.</p>
                     <a class="btn btn-primary" href="{% url 'item-detail' item.id %}">Lösung finden</a>
                 </div>
             </div>
