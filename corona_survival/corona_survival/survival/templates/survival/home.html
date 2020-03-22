@@ -3,7 +3,7 @@
 <h1>ErsatzKompass</h1>
 <div class="container"><img class="rounded float-left" src="/media/Logo_ErsatzKompass_square.png" width="250" height="250" class="thumbnail">
     <p>Herzlich Willkommen</b> bei <b>ErsatzKompass</b></p>
-    <p>hier findest du jede Menge Ideen und Tipps, um Zutaten in
+    <p>Hier findest du jede Menge Ideen und Tipps, um Zutaten in
     Rezepten ganz einfach zu ersetzen.
     Dadurch lassen sich Rezepte schnell abwandeln und an das anpassen, was du gerade zur Verfügung hast.
     So ermöglichen wir es dir auch dann zu kochen, wenn du nicht alles vorrätig hast oder etwas gerade nicht einkaufen
@@ -14,7 +14,9 @@
     Wenn du selbst eine Idee hast, wie eine Zutat durch eine andere ersetzt werden kann, hinterlasse gerne einen
     Kommentar, damit die Datenbank immer weiter wachsen kann.
     In den Bereichen "Hygiene" und "Freizeit" arbeiten wir daran, euch bald auch hier Ersatzmöglichkeiten zu zeigen.</p></div>
-    <br><br><br><br>
+    <br><br>
+    <a class="btn btn-primary btn-lg btn-block" href="{% url 'cs-categories' %}">Kategorien</a>
+    <br><br>
 <div class="container">
     <div class="row">
         {% for item in items %}

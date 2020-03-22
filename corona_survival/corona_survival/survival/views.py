@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
@@ -15,7 +16,11 @@ def home(request):
     return render(request, 'survival/home.html', context)
 
 def categories(request):
+    paginator = Paginator(Category.objects.all(), 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
+        'page_obj': page_obj,
         'categories': Category.objects.all(),
     }
     return render(request, 'survival/categories.html', context)
@@ -46,16 +51,21 @@ class CategoryDetailView(DetailView):
         return context
 
 def items(request):
+    paginator = Paginator(Item.objects.all(), 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'items': Item.objects.all(),
+        'page_obj': page_obj,
         'categories': Category.objects.all(),
     }
     return render(request, 'survival/items.html', context)
 
 def items_sorted(request, subcategory_id):
-    items = Item.objects.filter(subcategory_id=subcategory_id)
+    paginator = Paginator(Item.objects.filter(subcategory_id=subcategory_id), 20)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        'items': items,
+        'page_obj': page_obj,
         'categories': Category.objects.all(),
     }
     return render(request, 'survival/items.html', context)
