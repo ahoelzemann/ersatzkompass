@@ -92,12 +92,13 @@ def items(request):
     return render(request, 'survival/items.html', context)
 
 def items_sorted(request, subcategory_id):
-    paginator = Paginator(Item.objects.filter(subcategory_id=subcategory_id), 20)
+    paginator = Paginator(Item.objects.filter(subcategory_id=subcategory_id), 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
         'page_obj': page_obj,
         'categories': Category.objects.all(),
+        'count': paginator.count
     }
     return render(request, 'survival/items.html', context)
 
