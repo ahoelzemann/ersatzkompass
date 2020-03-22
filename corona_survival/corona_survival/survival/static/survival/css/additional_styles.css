@@ -2,9 +2,9 @@
     padding: 20px !important;
 }
 .btn-start {
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc;
+  color: white !important;
+  background-color: green !important;
+  border-color: #03B5B0 !important;
 }
 
 .btn-start:hover,
@@ -13,9 +13,9 @@
 .btn-start:active,
 .btn-start.active,
 .open > .dropdown-toggle.btn-start {
-  color: #333;
-  background-color: #e6e6e6;
-  border-color: #adadad;
+  color: black !important;
+  background-color: #03B5B0 !important;
+  border-color: #03B5B0 !important;
 }
 
 .top-buffer { margin-top:20px; }
