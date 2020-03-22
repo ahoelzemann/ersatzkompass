@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Item, Category, Substitution, Comment, Subcategory
 from random import *
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -25,14 +26,14 @@ def categories(request):
     }
     return render(request, 'survival/categories.html', context)
 
-#class CommentCreateView(CreateView):
-#    model = Comment
-#    fields = ['name', 'text']
-#
-#    def get_context_data(self, **kwargs):
-#        context = super().get_context_data(**kwargs)
-#        context['categories'] = Substitution.objects.all()
-#        return context
+class CommentCreateView(CreateView):
+    model = Comment
+    fields = ['name', 'text']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['substitution'] = Substitution.objects.all()
+        return context
 
 class ItemDetailView(DetailView):
     model = Item    
@@ -50,8 +51,26 @@ class CategoryDetailView(DetailView):
         context['categories'] = Category.objects.all()
         return context
 
+class SearchResultsView(ListView):
+    model = Item
+    template_name = 'items.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        items = Item.objects.filter(
+            Q(name__icontains=query) | Q(state__icontains=query)
+        )
+        return items
+
 def items(request):
-    paginator = Paginator(Item.objects.all(), 20)
+    items = Item.objects.all()
+    substitutions = Substitution.objects.all()
+    item_list = []
+    for substitution in substitutions:
+        for item in items:
+            if item.id == substitution.item_missing.id:
+                item_list.append(item)
+    paginator = Paginator(item_list, 20)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {

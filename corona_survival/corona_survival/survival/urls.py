@@ -8,6 +8,7 @@ urlpatterns = [
     path('', views.home, name='cs-home'),
     path('items/', views.items, name='cs-items'),
     path('items/sorted/<int:subcategory_id>', views.items_sorted, name='cs-items-sorted'),
+    path('search/', views.SearchResultsView.as_view(), name='search_results'),
     path('item/<int:pk>/', views.ItemDetailView.as_view(), name='item-detail'),
     path('categories/', views.categories, name='cs-categories'),
     path('category/<int:pk>/', views.CategoryDetailView.as_view(), name='category-detail'),
