@@ -10,6 +10,7 @@ class Category(models.Model):
 
 class Subcategory(models.Model):
     name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
 
     def __str__(self):
