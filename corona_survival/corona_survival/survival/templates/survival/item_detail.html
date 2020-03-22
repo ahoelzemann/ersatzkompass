@@ -1,21 +1,23 @@
 {% extends "survival/base.html" %}
 {% block content %}
-<p><h5>Substitution of {{ item }}</h5></p>
+{% if not item.substitution_set.all %}
+<p><h5>{{ item }} hat bisher keine Ersetzungen</h5></p>
+{% else %}
 <div class="card">
-    <h5 class="card-header">Alternatives</h5>
+    <h5 class="card-header">Alternativen von {{ item }}</h5>
     <div class="card-body">
         {% for item_sub in item.substitution_set.first.items_needed.all %}
             <p class="card-text">{{ item_sub }}</p>
         {% endfor %}
     </div>
-    <h5 class="card-header">Description</h5>
+    <h5 class="card-header">Beschreibung</h5>
     <div class="card-body">
         <p class="card-text">{{ item.substitution_set.first.description_of_creation }}</p>
     </div>
 </div>
 <p>
 <div class="card">
-  <h5 class="card-header">Comments</h5>
+  <h5 class="card-header">Kommentare</h5>
   <div class="card-body">
     {% for comment in item.substitution_set.first.comments.all %}
     <p class="card-text">{{ comment }}</p>
@@ -23,4 +25,5 @@
   </div>
   </div>
   </p>
+{% endif %}
 {% endblock content %}

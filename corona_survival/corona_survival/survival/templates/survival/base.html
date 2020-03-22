@@ -13,6 +13,9 @@
   </head>
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">
+      <img src="/media/Logo_ErsatzKompass_square.png" width="30" height="30" alt="">
+    </a>
     <a class="navbar-brand" href="{% url 'cs-home' %}">ErsatzKompass</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -20,15 +23,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
     <li class="nav-item active">
-    <a class="nav-link" href="{% url 'cs-items' %}">Items<span class="sr-only">(current)</span></a>
+    <a class="nav-link" href="{% url 'cs-items' %}">Begriffe<span class="sr-only">(current)</span></a>
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
          aria-haspopup="true" aria-expanded="false">
-          Categories
+          Kategorien
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'cs-categories' %}">All Categories</a>
+          <a class="dropdown-item" href="{% url 'cs-categories' %}">Alle Kategorien</a>
           <div class="dropdown-divider"></div>
           {% for category in categories %}
             <a class="dropdown-item" href="{% url 'category-detail' category.id %}">{{category}}</a>
@@ -39,7 +42,6 @@
     <form class="form-inline">
     {% if user.is_authenticated %}
     <a class="btn btn-danger" href="{% url 'logout' %}" role="button">Logout</a>
-    {% else %}
     <a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
     {% endif %}
     </form>
@@ -55,7 +57,6 @@
               <div class="alert alert-{{ message.tags }}">{{ message }}</div>
             {% endfor %}
           {% endif %}
-          <h1>{{ title }}</h1>
           <p>
             {% block content %}
             {% endblock %}
@@ -67,11 +68,9 @@
       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
-  <!--<footer>
     <nav class="navbar fixed-bottom navbar-light bg-light">
       <div class="mx-auto" style="width: 200px;">
         <img src="/media/logo_project.png" class="img-thumbnail">
       </div>
     </nav>
-  </footer>-->
 </html>

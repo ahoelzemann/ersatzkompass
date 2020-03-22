@@ -1,33 +1,22 @@
 {% extends "survival/base.html" %}
 {% block content %}
-<h2> {{ categories.count }} Categories so far</h2>
-{% if user.is_authenticated %}
-    <p><button type="button" class="btn btn-success">Add Item</button></p>
-{% endif %}
+<h2> {{ categories.count }} Kategorien bis jetzt</h2>
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Subcategories</th>
-        <th scope="col">Items</th>
-        {% if user.is_authenticated %}
-            <th scope="col">Actions</th>
-        {% endif %}
+        <th scope="col">Unterkategorien</th>
+        <th scope="col">Begriffe</th>
+        <th scope="col">Aktionen</th>
       </tr>
     </thead>
     <tbody>
         {% for category in categories %}
             <tr>
-                <th scope="row">{{ category.id }}</th>
                 <td>{{ category.name }}</td>
                 <td>{{ category.subcategory_set.count }}</td>
                 <td>{{ category.item_set.count }}</td>
-                {% if user.is_authenticated %}
-                    <td><button type="button" class="btn btn-link">Edit</button></td>
-                {% else %}
-                    <td><button type="button" class="btn btn-link">Show</button></td>
-                {% endif %}
+                <td><a href="{% url 'category-detail' category.id %}" class="btn btn-link">Anzeigen</a></td>
             </tr>
         {% endfor %}
     </tbody>

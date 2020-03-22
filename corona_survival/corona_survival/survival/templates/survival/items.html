@@ -1,33 +1,27 @@
 {% extends "survival/base.html" %}
 {% block content %}
-<h2> {{ items.count }} Items so far</h2>
+<h2> {{ items.count }} Dinge bis jetzt</h2>
 {% if user.is_authenticated %}
-    <p><button type="button" class="btn btn-success">Add Item</button></p>
+    <p><button type="button" class="btn btn-success">Ding hinzufügen</button></p>
 {% endif %}
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">ID</th>
         <th scope="col">Name</th>
-        <th scope="col">Category</th>
-        <th scope="col">Subcategory</th>
+        <th scope="col">Kategorie</th>
+        <th scope="col">Unterkategorie</th>
         {% if user.is_authenticated %}
-            <th scope="col">Actions</th>
+            <th scope="col">Aktionen</th>
         {% endif %}
       </tr>
     </thead>
     <tbody>
         {% for item in items %}
             <tr>
-                <th scope="row">{{ item.id }}</th>
-                <td>{{ item.name }}</td>
+                <th scope="row">{{ item.name }}</th>
                 <td>{{ item.category }}</td>
                 <td>{{ item.subcategory }}</td>
-                {% if user.is_authenticated %}
-                    <td><button type="button" href="{% url 'item-detail' item.id %}"class="btn btn-link">Edit</button></td>
-                {% else %}
-                    <td><a href="{% url 'item-detail' item.id %}" class="btn btn-link">Show</a></td>
-                {% endif %}
+                <td><a href="{% url 'item-detail' item.id %}" class="btn btn-link">Anzeigen</a></td>
             </tr>
         {% endfor %}
     </tbody>
