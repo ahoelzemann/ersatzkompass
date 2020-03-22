@@ -1,0 +1,19 @@
+.landing_page_logo {
+    padding: 20px !important;
+}
+.btn-start {
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+}
+
+.btn-start:hover,
+.btn-start:focus,
+.btn-start.focus,
+.btn-start:active,
+.btn-start.active,
+.open > .dropdown-toggle.btn-start {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
