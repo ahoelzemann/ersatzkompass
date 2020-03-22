@@ -1,4 +1,33 @@
 {% extends "survival/base.html" %}
 {% block content %}
-    <h2>Welcome to ....</h2>
+<img src="/media/default.jpg" class="img-thumbnail">
+<p></p>
+<b>Herzlich Willkommen</b> bei <b>ErsatzKompass</b> <p>
+<p> hier findest du jede Menge Ideen und Tipps, um Zutaten in
+    Rezepten ganz einfach zu ersetzen.
+    Dadurch lassen sich Rezepte schnell abwandeln und an das anpassen, was du gerade zur Verfügung hast.
+    So ermöglichen wir es dir auch dann zu kochen, wenn du nicht alles vorrätig hast oder etwas gerade nicht einkaufen
+    kannst.
+    Und so geht’s:<br>
+    Gib einfach in die Suche die gewünschte Zutat ein, z.B. „Eier“, oder wähle aus einer der Kategorien im
+    „Lebensmittel“-Bereich ein Lebensmittel aus, für das Du einen Ersatz suchst: wir zeigen dir dann Alternativen.
+    Wenn du selbst eine Idee hast, wie eine Zutat durch eine andere ersetzt werden kann, hinterlasse gerne einen
+    Kommentar, damit die Datenbank immer weiter wachsen kann.
+    In den Bereichen "Hygiene" und "Freizeit" arbeiten wir daran, euch bald auch hier Ersatzmöglichkeiten zu zeigen.
+<br><br><br>
+<div class="container">
+    <div class="row">
+        {% for item in items %}
+        <div class="col-sm">
+            <div class="card" style="width: 15rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item }}</h5>
+                    <p class="card-text">Hier findest du einige Alternativen um {{ item }} zu ersetzen.</p>
+                    <a class="btn btn-primary" href="#">Lösung finden</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock content %}
