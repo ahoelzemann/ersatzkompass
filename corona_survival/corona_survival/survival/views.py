@@ -17,7 +17,7 @@ def home(request):
     return render(request, 'survival/home.html', context)
 
 def categories(request):
-    paginator = Paginator(Category.objects.all(), 20)
+    paginator = Paginator(Category.objects.all(), 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
@@ -69,8 +69,9 @@ def items(request):
     for substitution in substitutions:
         for item in items:
             if item.id == substitution.item_missing.id:
-                item_list.append(item)
-    paginator = Paginator(item_list, 20)
+                if(item not in item_list):
+                    item_list.append(item)
+    paginator = Paginator(item_list, 10)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     context = {
