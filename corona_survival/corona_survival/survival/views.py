@@ -57,15 +57,8 @@ class SearchResultsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        search_objects = Item.objects.filter(Q(name__icontains=query))
-        #paginator = Paginator(items, 10)
-        #page_number = self.request.GET.get('page')
-        #page_obj = paginator.get_page(page_number)
-        #result = {
-        #    'page_obj': page_obj,
-        #    'count': paginator.count
-        #}
-        return search_objects
+        object_list = Item.objects.filter(Q(name__icontains=query))
+        return object_list
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
