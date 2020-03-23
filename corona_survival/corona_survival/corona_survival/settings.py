@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'y@%49!af@@pen=khyv!$6*y2&ghg&3pwhe*gyi@jogcg@jkbob'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['corsubst.uber.space', '127.0.0.1']
 
@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'corona_survival.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-     #'default': {
+     # 'default': {
      #    'ENGINE': 'django.db.backends.sqlite3',
      #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-     #}
+     # }
     'default': {
       'ENGINE': 'django.db.backends.mysql',
       'NAME': 'web74_wirvsvirus_substitution',
